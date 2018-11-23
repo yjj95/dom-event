@@ -1,0 +1,17 @@
+/*$('#button').on("click",function(e){
+   $(".popover").show()
+   e.stopPropagation()
+})
+//解决点击浮层，浮层消失,点击浮层不触发函数
+$(".popover").on("click",function(e){
+   $(".popover").show()
+   e.stopPropagation()
+})*/
+$(".wrapper").on("click",function(e){
+   $(".popover").show()
+   //阻止事件冒泡
+   e.stopPropagation()
+})
+$(document).on("click",function(){
+   $(".popover").hide()
+})
