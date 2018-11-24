@@ -1,7 +1,7 @@
 //$(".wrapper").on('click',false)//阻止传播和默认事件
 //如果有很多个popover都需要监听，是很耗费内存的
 //节省内存
-$(".wrapper").on("click",function(e){
+$("#button").on("click",function(e){
    $(".popover").show()
    //在还没冒到document时就把监听点击处理函数放入事件队列里了
    //刚一冒上去就执行
@@ -9,7 +9,8 @@ $(".wrapper").on("click",function(e){
    //与放在外面不同的是进队列的时间不同-
    //现在的情况是在冒泡的过程中去后面添加事件处理函数
    //不等冒泡走完就执行了，
-   //不让他那么快执行的两种方法，阻止冒泡/加setTimeout*
+   //不让他那么快执行的两种方法，
+   //阻止冒泡(就不执行了)/加setTimeout(延迟执行)*
    //加setTimeout让它等一会再执行
    //延迟传播会等之前的事情(冒泡会冒完)做完
    setTimeout(function(){
@@ -18,10 +19,8 @@ $(".wrapper").on("click",function(e){
          $(".popover").hide()
       })
    },0)
-   
-   //阻止事件冒泡
-   //e.stopPropagation()//IE8会阻止checkbox的默认事件
 })
-$(document).one("click",function(){
-   console.log('我是外面的')//外面比里面快
+$('.popover').on('click',function(e){
+   //阻止事件冒泡
+   e.stopPropagation()//IE8会阻止checkbox的默认事件
 })
